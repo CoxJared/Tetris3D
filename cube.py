@@ -10,3 +10,5 @@ class Cube :
     def __init__(self, position = (0,0,0), color = (255, 0, 0)):
         x, y, z = position
         self.verts= [(x+X/2, y+Y/2, z+Z/2) for X, Y, Z in self.verticies]
+
+
