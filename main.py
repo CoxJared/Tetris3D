@@ -35,10 +35,11 @@ if __name__ == "__main__":
     cubeCoords = (0, 0, 0), (2, 2, 2), (2, 2, -2), (2, -2, -2), (-2, 2, -2), (2, -2, 2), (-2, -2, 2), (-2, -2, -2), (-2, 2, 2)
     #cubes = [Cube((x, y, z)) for x, y, z in cubeCoords]
 
-    cubes = t_piece((0, 0, 0)).cubes
+    firstPiece = piece('t', (0, -20, 0))
 
     while True:
 
+        cubes = firstPiece.cubes
         dt = clock.tick()/1000
 
         for event in pygame.event.get():
@@ -106,5 +107,8 @@ if __name__ == "__main__":
 
         key =pygame.key.get_pressed()
         camera.update(dt, key)
+        firstPiece.update(dt, key)
+        firstPiece.updateCoords()
+
 
         print("x: %f\ny: %f\nz: %f\n0: %f\n1: %f" % (camera.position[0], camera.position[1], camera.position[2], camera.rotation[0], camera.rotation[1]))

@@ -25,21 +25,21 @@ class Camera:
 
         x, y = s * math.sin(self.rotation[1]), s * math.cos(self.rotation[1])
 
-        if key[pygame.K_w]:
-           self.position[0] += x
-           self.position[2] += y
+        #if key[pygame.K_w]:
+        #   self.position[0] += x
+        #   self.position[2] += y
 
-        if key[pygame.K_s]:
-            self.position[0] -= x
-            self.position[2] -= y
+        #if key[pygame.K_s]:
+        #    self.position[0] -= x
+        #    self.position[2] -= y
 
-        if key[pygame.K_d]:
-            self.position[0] -= y
-            self.position[2] += x
+        #if key[pygame.K_d]:
+        #    self.position[0] -= y
+        #    self.position[2] += x
 
-        if key[pygame.K_a]:
-            self.position[0] += y
-            self.position[2] -= x
+        #if key[pygame.K_a]:
+        #    self.position[0] += y
+        #    self.position[2] -= x
 
 
         if(key[pygame.K_j]):
