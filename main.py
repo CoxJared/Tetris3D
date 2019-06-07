@@ -11,12 +11,16 @@ def rotate2d(position, radians):
     sinAngle, cosAngle = math.sin(radians), math.cos(radians)
     return x * cosAngle - y * sinAngle, y * cosAngle + x * sinAngle
 
-if __name__ == "__main__":
+def setup():
     pygame.init()
     pygame.event.get()
     pygame.mouse.get_rel()
     pygame.mouse.set_visible(0);
     pygame.event.set_grab(1)
+
+
+if __name__ == "__main__":
+    setup()
 
     WIDTH, HEIGHT = 400, 600
     cx, cy = WIDTH// 2, HEIGHT // 2
@@ -27,10 +31,11 @@ if __name__ == "__main__":
     camera = Camera((-2.053591, -18.280000, -11.759600), (0.133334, -5.723333))
 
     firstPiece = piece('t', (0, -20, 0))
+    base = base()
 
     while True:
 
-        cubes = firstPiece.cubes
+        cubes = firstPiece.cubes + base.cubes
         dt = clock.tick()/1000
 
         for event in pygame.event.get():
