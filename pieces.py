@@ -76,6 +76,12 @@ class t_piece:
 
 
 
+class base:
+
+    def __init__ (self):
+        coords = (0, 0, 0)
+        self.cubes = [Cube((x, y, z)) for x, y, z in cubeCoords]
+        self.counter = 0
 
 
 

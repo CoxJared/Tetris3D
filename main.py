@@ -6,18 +6,12 @@ from cube import *
 from camera import *
 from pieces import *
 
-
-#z is up-right
-#y is down-right
-#x is down
-
 def rotate2d(position, radians):
     x, y = position
     sinAngle, cosAngle = math.sin(radians), math.cos(radians)
     return x * cosAngle - y * sinAngle, y * cosAngle + x * sinAngle
 
 if __name__ == "__main__":
-
     pygame.init()
     pygame.event.get()
     pygame.mouse.get_rel()
@@ -31,9 +25,6 @@ if __name__ == "__main__":
     clock = pygame.time.Clock()
 
     camera = Camera((-2.053591, -18.280000, -11.759600), (0.133334, -5.723333))
-
-    cubeCoords = (0, 0, 0), (2, 2, 2), (2, 2, -2), (2, -2, -2), (-2, 2, -2), (2, -2, 2), (-2, -2, 2), (-2, -2, -2), (-2, 2, 2)
-    #cubes = [Cube((x, y, z)) for x, y, z in cubeCoords]
 
     firstPiece = piece('t', (0, -20, 0))
 
@@ -60,12 +51,10 @@ if __name__ == "__main__":
         depth = []
 
         for obj in cubes:
-
             vertList = []
             screenCoordinates = []
 
             for x,y,z in obj.verts:
-
                 x -= camera.position[0]
                 y -= camera.position[1]
                 z -= camera.position[2]
@@ -110,5 +99,5 @@ if __name__ == "__main__":
         firstPiece.update(dt, key)
         firstPiece.updateCoords()
 
-
+        #for debugging
         print("x: %f\ny: %f\nz: %f\n0: %f\n1: %f" % (camera.position[0], camera.position[1], camera.position[2], camera.rotation[0], camera.rotation[1]))
