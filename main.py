@@ -13,8 +13,6 @@ def rotate2d(position, radians):
 
 def setup():
     pygame.init()
-    pygame.event.get()
-    pygame.mouse.get_rel()
     pygame.mouse.set_visible(0);
     pygame.event.set_grab(1)
 
@@ -22,20 +20,21 @@ def setup():
 if __name__ == "__main__":
     setup()
 
-    WIDTH, HEIGHT = 400, 600
+    WIDTH, HEIGHT = 500, 500
     cx, cy = WIDTH// 2, HEIGHT // 2
 
     screen = pygame.display.set_mode((WIDTH, HEIGHT))
     clock = pygame.time.Clock()
 
-    camera = Camera((-2.053591, -18.280000, -11.759600), (0.133334, -5.723333))
+    camera = Camera((-1.9, -14.77, -11.05), (0.14, -5.65))
 
     firstPiece = piece('t', (0, -20, 0))
     base = base()
+    staticCubes = base.cubes
 
     while True:
 
-        cubes = firstPiece.cubes + base.cubes
+        cubes = firstPiece.cubes + staticCubes
         dt = clock.tick()/1000
 
         for event in pygame.event.get():
@@ -85,12 +84,13 @@ if __name__ == "__main__":
                 if on_screen:
                     coords = [screenCoordinates[i] for i in face]
                     faceList += [coords]
-                    faceColor += [obj.colors[faceIndex]]
-
                     depth += [sum(sum(vertList[j][i] for j in face)**2 for i in range(3))]
+            #check if cube hit the bottom
+            if(obj.)
 
         order = sorted(range(len(faceList)), key =lambda i: depth[i], reverse = 1)
 
+        #drawing to screen
         for i in order:
             try:
                 pygame.draw.polygon(screen, faceColor[i], faceList[i])
@@ -98,8 +98,7 @@ if __name__ == "__main__":
                 pass
 
         pygame.display.flip()
-
-        key =pygame.key.get_pressed()
+        key = pygame.key.get_pressed()
         camera.update(dt, key)
         firstPiece.update(dt, key)
         firstPiece.updateCoords()
