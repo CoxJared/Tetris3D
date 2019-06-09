@@ -13,6 +13,8 @@ def rotate2d(position, radians):
 
 def setup():
     pygame.init()
+    pygame.event.get()
+    pygame.mouse.get_rel()
     pygame.mouse.set_visible(0);
     pygame.event.set_grab(1)
 
@@ -84,9 +86,9 @@ if __name__ == "__main__":
                 if on_screen:
                     coords = [screenCoordinates[i] for i in face]
                     faceList += [coords]
+                    faceColor +=[obj.colors[faceIndex]]
                     depth += [sum(sum(vertList[j][i] for j in face)**2 for i in range(3))]
             #check if cube hit the bottom
-            if(obj.)
 
         order = sorted(range(len(faceList)), key =lambda i: depth[i], reverse = 1)
 
